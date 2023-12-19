@@ -13,6 +13,8 @@ class MainScene extends Phaser.Scene {
         this.load.image('city','assets/city.png');
         this.load.image('taro','assets/taro.png');
         this.load.image('hanako','assets/hanako.png');
+        this.load.image('apple','assets/apple.png');
+        this.load.image('orange','assets/orange.png');
     }
     // シーン初期化処理
     create() {
@@ -21,7 +23,22 @@ class MainScene extends Phaser.Scene {
         const hanako = this.physics.add.sprite(750,400 ,'hanako');
         this.taro=taro;
         this.hanako=hanako;
+        function generateRandomPosition() {
+            const x = Phaser.Math.Between(25, 775);
+            const y = Phaser.Math.Between(25, 425);
+            return { x, y };
+        }
+        for (let i = 0; i < 5; i++) {
+            const applePos = generateRandomPosition();
+            this.add.image(applePos.x, applePos.y, 'apple'); 
+        }
+        for (let i = 0; i < 5; i++) {
+            const orengePos = generateRandomPosition();
+            this.add.image(orengePos.x, orengePos.y, 'orange');
+
     }
+}
+    
     // 毎フレーム実行される繰り返し処理
     update() {
        // キーボードの情報を取得
